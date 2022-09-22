@@ -24,8 +24,7 @@
         <h4>Search for a City</h4>
       </div>
 
-
-      <div class="input-group mb-3">
+     <div class="input-group mb-3">
         <input id="city-input" type="text" class="form-control" placeholder="Enter City Name"
                aria-label="Enter city name">
 
@@ -34,64 +33,57 @@
             <i class="fas fa-search"></i>
           </button>
         </div>
-                    <h5 class="justify-content-center pt-2 pl-3">Your previously searched cities: </h5>
-                    <ul style='list-style:none' id="historyList">
-                     </ul>
-                    </div>
-            </div>
 
+      </div>
+      <div>
+        <h6>Recently searched cities:</h6>
+        <ul style='list-style:none' id="historyList">
+        </ul>
+      </div>
+    </div>
+    <!-- main output -->
 
-        <div class="today_weather col-9 pt-3">
-               <div class="row mr-0">
+    <div class="col-sm-12 col-lg-8">
+
+      <div class="row mr-0">
         <div class="col-12 m-3 rounded">
 
 
           <div class="row">
+
             <div class="col-sm-12 col-lg-8">
-              <span id="city-name" class="city-name align-middle"></span></div>
+              <span id="city-name" class="city-name align-middle"></span>
+            </div>
+
           </div>
 
           <div class="row">
-            <div class="col-12 box" id="cityList"> </div>
-              <div class="col-md-4"> </div>
+            <div class="col-12 box">
+              <div id="cityList">
+
+              </div>
+              <div class="col-md-4">
+              </div>
             </div>
           </div>
         </div>
-    
-          
-          <!--FORCA
-            <div class="five-day-div bcard-body mx-2 my-2">
-                  
-                        <h5 class="text-dark">Five Day Weather Forecast</h5>
-                   
-                <div class="row" id="days"   
-                    </div>
-                   
-                </div>
-            
-          
-          
-          </div>
-        </div>
+      </div>
+      <!-- 5 Days Weather Forcast list here -->
+      <div class="row" id="days">
+      </div>
+    </div>
 
 
+  </div>
+</div>
 
-    
-                    
-
-
-
-            </div>
-        </div>
-
-</section>
-
-
-
-
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 
-  <script src="./assets/js/weather.js"></script>
+
+
+<script src="assets/js/weather.js"></script>
 </body>
 
 </html>
