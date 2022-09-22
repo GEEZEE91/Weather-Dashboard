@@ -86,7 +86,7 @@ function displayForecast(c) {
         console.log(arrayList[i]);
 
         var cityMain = $('<div>');
-        cityMain.addClass('col forecast bg-primary text-white ml-3 mb-3 rounded>' );
+        cityMain.addClass('col forecast bg-primary text-white ml-3 mb-3 p-3 pt-6 rounded>' );
         var date5 = $("<h6>").text(response.list[i].dt_txt.split(" ")[0]);
         var image = $('<img>').attr('src', 'http://openweathermap.org/img/w/' + arrayList[i].weather[0].icon + '.png');
         var degreeMain = $('<p>').text('Temp : ' + arrayList[i].main.temp + '°C');
