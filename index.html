@@ -14,8 +14,12 @@
 </head>
 
 <body>
-    <div class="jumbotron container-fluid  text-center p-5" style="background-color:#6f01ff ;color: white;">
-        <h1> <strong>Weather Forecast Dashboard</strong></h1> </div>
+<div class="jumbotron container-fluid  text-center p-5" style="background-color:#6f01ff ;color: white;">
+  <h1> <strong>Weather Forecast Dashboard</strong></h1>
+  <div id="currentDay" >
+  </div>
+  <div id="currentTime" ></div>
+</div>
 
         <div class="container-fluid row" style="max-width: 90%;">
     <div class="col-sm-12 col-lg-4">
@@ -24,7 +28,7 @@
         <h4>Search for a City</h4>
       </div>
 
-     <div class="input-group mb-3">
+       <div class="input-group mb-3">
         <input id="city-input" type="text" class="form-control" placeholder="Enter City Name"
                aria-label="Enter city name">
 
@@ -36,28 +40,27 @@
 
       </div>
       <div>
-        <h6>Recently searched cities:</h6>
-        <ul style='list-style:none' id="historyList">
-        </ul>
-      </div>
+      <h6>Recently searched cities:</h6>
+      <ul style='list-style:none' id="historyList">
+      </ul>
     </div>
-    <!-- main output -->
+    </div>
+          
+          
+    <!-- City search result section -->
 
-    <div class="col-sm-12 col-lg-8">
+    <div class="col-lg-8">
 
       <div class="row mr-0">
         <div class="col-12 m-3 rounded">
 
 
           <div class="row">
-
-            <div class="col-sm-12 col-lg-8">
+            <div class="col-lg-8 current-day">
               <span id="city-name" class="city-name align-middle"></span>
             </div>
 
-          </div>
 
-          <div class="row">
             <div class="col-12 box">
               <div id="cityList">
 
@@ -66,8 +69,10 @@
               </div>
             </div>
           </div>
+
         </div>
       </div>
+      
       <!-- 5 Days Weather Forcast list here -->
       <div class="row" id="days">
       </div>
@@ -77,12 +82,8 @@
   </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-
-
-
 <script src="assets/js/weather.js"></script>
 </body>
 
