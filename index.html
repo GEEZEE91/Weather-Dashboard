@@ -7,6 +7,7 @@
   <title>Weather Dashboard</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
   <link rel="stylesheet"
@@ -17,38 +18,41 @@
 <body>
 <div class="jumbotron container-fluid  text-center p-5" style="background-color:#6f01ff ;color: white;">
   <h1> <strong>Weather Forecast Dashboard</strong></h1>
-  <div id="currentDay" >
-  </div>
+  <div id="currentDay" > </div>
   <div id="currentTime" ></div>
 </div>
 
 <div class="container" style="max-width: 90%;">
 
-  <div class="row">
-    <div class="col-sm-12 col-lg-4 bg-light">
+  <!--SEARCH FOR CITIES SECTION-->
+    <div class="row">
+    <div class="col-sm-12 col-lg-4 bg-light p-2">
 
-      <div>
-        <h4>Search for a City</h4>
+      <div class ="mt-3 text-center text-primary">
+        <h3>Search City to find Weather</h3>
       </div>
 
 
-      <div class="input-group mb-3">
-        <input id="city-input" type="text" class="form-control" placeholder="Enter City Name"
-               aria-label="Enter city name">
+      <div class="input-group">
+        <input type="search" class="form-control rounded" placeholder="Search a City" aria-label="Search" aria-describedby="search-addon" id="city-input"  />
+          <button type="button" class="btn btn-primary" id="search-button"> Search </button>
+      </div>
 
-        <div class="input-group-append">
-          <button class="btn btn-primary" type="button" id="search-button">
-            <i class="fas fa-search"></i>
-          </button>
+      <!--Search History Section-->
+      <div class="mt-3 text-center text-dark">
+      <h6>Search History</h6>
         </div>
 
-      </div>
-      <div>
-      <h6>Recently searched cities:</h6>
-      <ul style='list-style:none' id="historyList">
-      </ul>
+     <div class="d-grid col-md-12 text-center" id="historyList">
+
     </div>
+
+      <div class="col-md-12 text-center mt-3">
+        <button id="clearButton" class="btn btn-secondary">Clear Search</button>
+       </div>
     </div>
+
+
     <!-- City search result section -->
 
     <div class="col-lg-8">
@@ -58,7 +62,6 @@
 
 
           <div class="row">
-
             <div class="col-lg-8 current-day">
               <span id="city-name" class="city-name align-middle"></span>
             </div>
@@ -66,7 +69,6 @@
 
             <div class="col-12 box">
               <div id="cityList">
-
               </div>
               <div class="col-md-4">
               </div>
@@ -75,7 +77,7 @@
 
         </div>
       </div>
-      <!-- 5 Days Weather Forcast list here -->
+      <!-- 5 Days Weather Forecast list here -->
       <div class="row align-items-space-around" id="days">
       </div>
     </div>
@@ -86,8 +88,7 @@
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-
 <script src="assets/js/script.js"></script>
-</body>
 
+</body>
 </html>

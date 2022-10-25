@@ -1,37 +1,19 @@
-.body{
-    background-color: rgb(111, 202, 202);
-  }
-  
-  
-  .btn {
-    color: rgb(117, 66, 66);
- 
-  }
-  
-  .current-day{
-    padding: 0px;
-    font-size: 20px;
-    font-weight: 700;
 
-    text-align: center;
-    margin: 0em;
-  }
-  
   .col-12 .box {
-    background:rgb(238, 182, 99);
+    background: rgb(255, 160, 2);
     border-radius: 12px;
     width: 760px;
-    margin-top: -2px;
-    margin-left: -10px;
     padding:30px;
+    color: white;
   }
+
   .temperatureFont {
     font-family: 'Open Sans', sans-serif;
   }
   .bg-primary{
     border-radius: 14px;
     padding: 10px;
-    background-color: aquamarine;
+    background: aquamarine;
   }
   .bg-light {
     margin-top: 15px;
@@ -39,17 +21,24 @@
     border-radius: 10px;
     margin-bottom: 17px;
   }
-  .imgsize {
-    width: 150px;
-    float: right;
-    margin-right: 75%;
+.h6 {
+  text-align: center;
+}
+.input-group{
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
 
-  }
+.form-control{
+align-self: center;
+  height: 6vh;
+}
+.search-button{
+  align-self: end;
+  max-height: 4vh;
+}
 
-  .img{
-    width: 300px;
-  }
-  .li{
-    margin-bottom: 10px;
-    margin-left: -40px;
-  }
+.img-size{
+  float: right;
+  margin-right: 50%;
+}

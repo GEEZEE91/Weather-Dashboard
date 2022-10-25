@@ -19,13 +19,12 @@ $("#search-button").on("click", function (event) {
 });
 
 function searchHistory(cityname) {
-  var newLi = $("<li>")
   var newBtn = $('<button>');
   newBtn.attr('id', 'extraBtn');
-  newBtn.addClass("button is-small recentSearch");
+  newBtn.addClass('btn btn-amber col-12', "type='button'");
   newBtn.text(cityname);
-  newLi.append(newBtn)
-  $("#historyList").prepend(newLi);
+  $("#historyList").append(newBtn)
+  $("#historyList").prepend(newBtn);
   $("#extraBtn").on("click", function () {
     let newcity = $(this).text();
     getWeather(newcity);
@@ -39,14 +38,14 @@ function getWeather(cityname) {
     method: "GET",
     error: (err => {
       alert("Your city was not found. Check your spelling or enter a city code")
-      return;
+
     })
   }).then(function (response) {
     console.log(response)
     $("#cityList").empty()
     $("#days").empty()
     var cityMain1 = $("<div col-12>").append($("<h3>" + response.name + ' - ' + currentDate + "</h3>"));
-    var image = $('<img class="imgsize">').attr('src', 'http://openweathermap.org/img/w/' + response.weather[0].icon + '.png');
+    var image = $('<img class="img-size">').attr('src', 'http://openweathermap.org/img/wn/' + response.weather[0].icon + '@4x.png');
     var degreeMain = $('<p>').text('Temperature : ' + response.main.temp + '°C');
     var humidityMain = $('<p>').text('Humidity : ' + response.main.humidity + '%');
     var windMain = $('<p>').text('Wind Speed : ' + response.wind.speed + 'MPH');
@@ -62,14 +61,26 @@ function getWeather(cityname) {
   });
 }
 function displayUVindex(uv) {
-  $.ajax({ //
+  let then = $.ajax({ //
     url: "https://api.openweathermap.org/data/2.5/uvi?appid=" + APIKey + uv,
     method: "GET"
   }).then(function (response) {
     var UVIndex = $("<p><span>");
-    UVIndex.attr("class", "badge badge-danger");
+
     UVIndex.text(response.value);
-    $("#cityList").append('UV-Index : ').append(UVIndex);
+    let uv = response.value;
+    $("#cityList").append('UV-Index : <br> ').append(UVIndex)
+    if (uv >= 11) {
+      UVIndex.attr("class", "badge badge-dark");
+    } else if (uv >= 8) {
+      UVIndex.attr("class", "badge badge-danger");
+    } else if (uv >= 6) {
+      UVIndex.attr("class", "badge badge-warning");
+    } else if (uv >= 3) {
+      UVIndex.attr("class", "badge badge-success");
+    }  else if (uv >= 0)  {
+      UVIndex.attr("class", "badge badge-light");
+    }
   });
 }
 
@@ -84,11 +95,10 @@ function displayForecast(c) {
     for (var i = 0; i < arrayList.length; i++) {
       if (arrayList[i].dt_txt.split(' ')[1] === '12:00:00') {
         console.log(arrayList[i]);
-
         var cityMain = $('<div>');
-        cityMain.addClass('col forecast bg-primary text-white ml-3 mb-3 p-3 pt-6 rounded>' );
+        cityMain.addClass('col forecast bg-primary text-white text-center ml-3 mb-3 p-3 pt-6 rounded>' );
         var date5 = $("<h6>").text(response.list[i].dt_txt.split(" ")[0]);
-        var image = $('<img>').attr('src', 'http://openweathermap.org/img/w/' + arrayList[i].weather[0].icon + '.png');
+        var image = $('<img>').attr('src', 'http://openweathermap.org/img/wn/' + arrayList[i].weather[0].icon + '@2x.png');
         var degreeMain = $('<p>').text('Temp : ' + arrayList[i].main.temp + '°C');
         var humidityMain = $('<p>').text('Humidity : ' + arrayList[i].main.humidity + '%');
         var windMain = $('<p>').text('Wind Speed : ' + arrayList[i].wind.speed + 'MPH');
@@ -97,7 +107,7 @@ function displayForecast(c) {
       }
     }
   });
-};
+}
 
 function checkLocalStorage() {
   var storedData = localStorage.getItem('queries');
@@ -111,7 +121,7 @@ function checkLocalStorage() {
       searchHistory(dataArray[i]);
     }
   }
-};
+}
 
 
 function saveToLocalStorage(cityname) {
@@ -122,9 +132,14 @@ function saveToLocalStorage(cityname) {
     data = cityname;
     localStorage.setItem('queries', data);
   }
-  if (data.indexOf(cityname) === -1) {
+  if (data.indexOf(cityname)-1) {
     data = data + ',' + cityname;
     localStorage.setItem('queries', data);
     searchHistory(cityname);
   }
 }
+$("#clearButton").on("click", function () {
+  $("#historyList").empty();
+  $("#city-input").empty();
+  localStorage.clear();
+})
