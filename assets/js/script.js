@@ -6,7 +6,7 @@ $(window).on('load', function () {
 var APIKey = "1401623932563c24702a8d3ac1d62c4b";
 var cityname = "";
 var now = moment();
-var currentDate = now.format('Do MMMM YYYY');
+var currentDate = now.format('ddd, Do MMMM YYYY');
 var currentTime= now.format ( 'h:mm A')
 $("#currentDay").text(currentDate);
 $("#currentTime").text(currentTime);
@@ -43,21 +43,29 @@ function getWeather(cityname) {
   }).then(function (response) {
     console.log(response)
     $("#cityList").empty()
+    
+    $("#cityHeader").empty()
+    $("#cityImg").empty()
     $("#days").empty()
-    var cityMain1 = $("<div col-12>").append($("<h3>" + response.name + ' - ' + currentDate + "</h3>"));
-    var image = $('<img class="img-size">').attr('src', 'http://openweathermap.org/img/wn/' + response.weather[0].icon + '@4x.png');
-    var degreeMain = $('<p>').text('Temperature : ' + response.main.temp + '°C');
-    var humidityMain = $('<p>').text('Humidity : ' + response.main.humidity + '%');
-    var windMain = $('<p>').text('Wind Speed : ' + response.wind.speed + 'MPH');
+    
+    $("#cityHeader").append($("<h1 class='display-4'>" + response.name + ",  "  + response.sys.country + "</p> <h4>" + currentDate + "</h4> <hr class='style2'>"));
+   
+    // $("#cityList").append
+    $("#cityList").append($('<h1 class="display-3">').text(response.main.temp + ' °C'));
+    $("#cityList").append($('<p>').text('max  ' + response.main.temp_max + ' °C    ' + '    min  ' + response.main.temp_min + ' °C '));
+    $("#cityList").append($('<br> <h5>').text('Humidity : ' + response.main.humidity + ' %'));
+    $("#cityList").append($('<h5>').text('Wind Speed : ' + response.wind.speed + ' MPH'));
+
+        // add image in weather dewscription turn lower cse to uppercase api description
+    const descriptionword = response.weather[0].description;
+    const capitalized =descriptionword.toUpperCase();
+    $('#cityImg').append($('<div class="description">').append('<img class="img-size" src="http://openweathermap.org/img/wn/' + response.weather[0].icon + '@4x.png"> <h4>' + capitalized + '</h4>'));
+   
     var uvIndexcoord = '&lat=' + response.coord.lat + '&lon=' + response.coord.lon;
     var cityId = response.id;
-
     displayUVindex(uvIndexcoord);
     displayForecast(cityId);
 
-    cityMain1.append(image).append(degreeMain).append(humidityMain).append(windMain);
-    $('#cityList').empty();
-    $('#cityList').append(cityMain1);
   });
 }
 function displayUVindex(uv) {
@@ -65,21 +73,21 @@ function displayUVindex(uv) {
     url: "https://api.openweathermap.org/data/2.5/uvi?appid=" + APIKey + uv,
     method: "GET"
   }).then(function (response) {
-    var UVIndex = $("<p><span>");
+    var UVIndex = $("<h4>");
 
     UVIndex.text(response.value);
     let uv = response.value;
-    $("#cityList").append('UV-Index : <br> ').append(UVIndex)
+    $("#cityList").append($('<h5> UV-Index               </h5> ').append( UVIndex));
     if (uv >= 11) {
-      UVIndex.attr("class", "badge badge-dark");
+      UVIndex.attr("class", "badge badge-dark p-3 font-size-medium");
     } else if (uv >= 8) {
-      UVIndex.attr("class", "badge badge-danger");
+      UVIndex.attr("class", "badge badge-danger p-3 font-size-medium");
     } else if (uv >= 6) {
-      UVIndex.attr("class", "badge badge-warning");
+      UVIndex.attr("class", "badge badge-warning p-3 font-size-medium");
     } else if (uv >= 3) {
-      UVIndex.attr("class", "badge badge-success");
+      UVIndex.attr("class", "badge badge-success p-3 font-size-medium");
     }  else if (uv >= 0)  {
-      UVIndex.attr("class", "badge badge-light");
+      UVIndex.attr("class", "badge badge-light p-3 font-size-medium");
     }
   });
 }
