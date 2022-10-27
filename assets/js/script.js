@@ -100,16 +100,23 @@ function displayForecast(c) {
   }).then(function (response) {
 
     var arrayList = response.list;
+    
     for (var i = 0; i < arrayList.length; i++) {
       if (arrayList[i].dt_txt.split(' ')[1] === '12:00:00') {
         console.log(arrayList[i]);
+        
         var cityMain = $('<div>');
         cityMain.addClass('col forecast bg-primary text-white text-center ml-3 mb-3 p-3 pt-6 rounded>' );
-        var date5 = $("<h6>").text(response.list[i].dt_txt.split(" ")[0]);
+        
+         let date = response.list[i].dt_txt.split(" ")[0]);
+        
+        var date5 = $("<h6>").text(${moment.unix(date).format("DD-MM-YY")});
+        
         var image = $('<img>').attr('src', 'http://openweathermap.org/img/wn/' + arrayList[i].weather[0].icon + '@2x.png');
         var degreeMain = $('<p>').text('Temp : ' + arrayList[i].main.temp + '°C');
         var humidityMain = $('<p>').text('Humidity : ' + arrayList[i].main.humidity + '%');
         var windMain = $('<p>').text('Wind Speed : ' + arrayList[i].wind.speed + 'MPH');
+        
         cityMain.append(date5).append(image).append(degreeMain).append(humidityMain).append(windMain);
         $('#days').append(cityMain);
       }
