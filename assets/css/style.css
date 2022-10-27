@@ -5,7 +5,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   font-family: ‘Oswald’, sans-serif;
   font-weight: 500;
   line-height: 1.2;
-  color: inherit;
+
   }
 
   html {
@@ -27,7 +27,6 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     background: rgb(251, 156, 3);
     border-radius: 20px;
     display:flex;
-
     padding-left: 50px;
   }
   .col-md-12.box{
@@ -42,25 +41,16 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   
   }
 
-  .bg-primary{
-    border-radius: 14px;
-    padding: 10px;
-
-  }
-  .bg-light {
-    margin-top: 15px;
-    border: solid 2px rgb(94, 172, 211);
-    border-radius: 10px;
-    margin-bottom: 17px;
-  }
-
   .hr style2 {
-    border-top: 5px #060606;
+    border-top: 5px #c70000e8;
     margin-top: 0px;
     margin-bottom: 3px;
 
   }
 
+  #searchsec.col {
+    background: black;
+  }
 .input-group{
   margin-top: 25px;
   margin-bottom: 25px;
@@ -79,7 +69,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 .description{
   text-align: center;
   float: left;
-  background-color: rgba(255, 211, 110, 0.292);
+  background-color: rgba(255, 253, 249, 0.292);
   color: #2d2f428c;
   padding: 1.5rem;
   border: solid 2px rgba(244, 206, 15, 0.956);
@@ -87,3 +77,36 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 
+.card{
+  background: rgba(80, 7, 52, 0.74);
+  display: flex;
+  flex-wrap: wrap;
+  margin: 2vw;
+  color: aliceblue;
+  min-width: 12vw;
+}
+
+.card-header{
+  background: rgba(80, 7, 52, 0.836);
+  text-align: center;
+  justify-content: center;
+}
+
+
+
+#days{
+  background-color: darkgreen;
+}
+
+
+.card .card-body .card-text {
+  color: white;}
+
+
+.col-sm-12{
+background-color: aquamarine;
+}
+
+#search-container{
+  background: pink;
+}

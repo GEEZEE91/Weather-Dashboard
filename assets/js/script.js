@@ -48,10 +48,10 @@ function getWeather(cityname) {
     $("#cityImg").empty()
     $("#days").empty()
     
-    $("#cityHeader").append($("<h1 class='display-4'>" + response.name + ",  "  + response.sys.country + "</p> <h4>" + currentDate + "</h4> <hr class='style2'>"));
+    $("#cityHeader").append($("<h3'>" + response.name + ",  "  + response.sys.country + "</h3> <h4>" + currentDate + "</h4> <hr class='style2'>"));
    
     // $("#cityList").append
-    $("#cityList").append($('<h1 class="display-3">').text(response.main.temp + ' °C'));
+    $("#cityList").append($('<h2>').text(response.main.temp + ' °C'));
     $("#cityList").append($('<p>').text('max  ' + response.main.temp_max + ' °C    ' + '    min  ' + response.main.temp_min + ' °C '));
     $("#cityList").append($('<br> <h5>').text('Humidity : ' + response.main.humidity + ' %'));
     $("#cityList").append($('<h5>').text('Wind Speed : ' + response.wind.speed + ' MPH'));
@@ -77,7 +77,7 @@ function displayUVindex(uv) {
 
     UVIndex.text(response.value);
     let uv = response.value;
-    $("#cityList").append($('<h5> UV-Index               </h5> ').append( UVIndex));
+    $("#cityList").append($('<h4> UV-Index               </h4> ').append( UVIndex));
     if (uv >= 11) {
       UVIndex.attr("class", "badge badge-dark p-3 font-size-medium");
     } else if (uv >= 8) {
@@ -105,20 +105,34 @@ function displayForecast(c) {
       if (arrayList[i].dt_txt.split(' ')[1] === '12:00:00') {
         console.log(arrayList[i]);
         
-        var cityMain = $('<div>');
-        cityMain.addClass('col forecast bg-primary text-white text-center ml-3 mb-3 p-3 pt-6 rounded>' );
+        // var cityMain = $('<div>');
+        // cityMain.addClass('col forecast bg-primary text-white text-center ml-3 mb-3 p-3 pt-6 rounded>' );
+        var newCard = $('<div>').appendTo($(days));
+       var col = $("<div>").addClass("col-lg-2 col-md-12").appendTo(newCard);
+        var newCard = $("<div>").addClass("card").appendTo(newCard);
+        var newCardHeader = $("<div>").addClass("card-header").appendTo(newCard);
+      var newCardBody = $("<div>").addClass("card-body").appendTo(newCard);
+
+      
+      
+      var date = response.list[i].dt_txt.split(" ")[0];
+         var day = $("<h5>" + moment(date).format("dddd") + "</h5>");
+         var futureDate = $( "<h5>" + moment(date).format("DD-MM-YY") + "</h5>");
+       
         
-         let date = response.list[i].dt_txt.split(" ")[0]);
+        var futureImg = $('<img>').attr('src', 'http://openweathermap.org/img/wn/' + arrayList[i].weather[0].icon + '@2x.png');
         
-        var date5 = $("<h6>").text(${moment.unix(date).format("DD-MM-YY")});
+        var degreeMain = $('<div>'+ '🌡' + arrayList[i].main.temp + '°C' + '</div>');
+
+        var humidityMain = $('<div>' + '💧 ' + arrayList[i].main.humidity + '%' + '</div>');
+        var windMain = $('<div>' +'<i class="fa-solid fa-wind">  </i> ' + arrayList[i].wind.speed + 'MPH' + '</div>');
         
-        var image = $('<img>').attr('src', 'http://openweathermap.org/img/wn/' + arrayList[i].weather[0].icon + '@2x.png');
-        var degreeMain = $('<p>').text('Temp : ' + arrayList[i].main.temp + '°C');
-        var humidityMain = $('<p>').text('Humidity : ' + arrayList[i].main.humidity + '%');
-        var windMain = $('<p>').text('Wind Speed : ' + arrayList[i].wind.speed + 'MPH');
-        
-        cityMain.append(date5).append(image).append(degreeMain).append(humidityMain).append(windMain);
-        $('#days').append(cityMain);
+      $(day).addClass("card-title").appendTo(newCardHeader);
+      $(futureDate).addClass("card-title").appendTo(newCardHeader);
+      $(futureImg).appendTo(newCardBody);
+      $(degreeMain).addClass("card-text").appendTo(newCardBody);
+      $(humidityMain).addClass("card-text").appendTo(newCardBody);
+      $(windMain).addClass("card-text").appendTo(newCardBody);
       }
     }
   });
