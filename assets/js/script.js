@@ -21,7 +21,7 @@ $("#search-button").on("click", function (event) {
 function searchHistory(cityname) {
   var newBtn = $('<button>');
   newBtn.attr('id', 'extraBtn');
-  newBtn.addClass('btn btn-amber col-12', "type='button'");
+  newBtn.addClass('btn btn-amber btn-block rounded', "type='button'");
   newBtn.text(cityname);
   $("#historyList").append(newBtn)
   $("#historyList").prepend(newBtn);
@@ -48,15 +48,15 @@ function getWeather(cityname) {
     $("#cityImg").empty()
     $("#days").empty()
     
-    $("#cityHeader").append($("<h3'>" + response.name + ",  "  + response.sys.country + "</h3> <h4>" + currentDate + "</h4> <hr class='style2'>"));
+    $("#cityHeader").append($("<h2>" + response.name + ",  "  + response.sys.country + "</h2>" + "<p>" + currentDate + "</p>" ));
    
     // $("#cityList").append
-    $("#cityList").append($('<h2>').text(response.main.temp + ' °C'));
-    $("#cityList").append($('<p>').text('max  ' + response.main.temp_max + ' °C    ' + '    min  ' + response.main.temp_min + ' °C '));
-    $("#cityList").append($('<br> <h5>').text('Humidity : ' + response.main.humidity + ' %'));
-    $("#cityList").append($('<h5>').text('Wind Speed : ' + response.wind.speed + ' MPH'));
+    $("#cityList").append($('<h1>').text(response.main.temp + ' °C'));
+    $("#cityList").append($('<h5>').text('max  ' + response.main.temp_max + ' °C    ' + '    min  ' + response.main.temp_min + ' °C' + ' '));
+    $("#cityList").append($('<br>'+'<h4>').text('Humidity : ' + response.main.humidity + ' %'));
+    $("#cityList").append($('<h4>').text('Wind Speed : ' + response.wind.speed + ' MPH'));
 
-        // add image in weather dewscription turn lower cse to uppercase api description
+        // add image in weather scription turn lower cse to uppercase api description
     const descriptionword = response.weather[0].description;
     const capitalized =descriptionword.toUpperCase();
     $('#cityImg').append($('<div class="description">').append('<img class="img-size" src="http://openweathermap.org/img/wn/' + response.weather[0].icon + '@4x.png"> <h4>' + capitalized + '</h4>'));
@@ -77,17 +77,17 @@ function displayUVindex(uv) {
 
     UVIndex.text(response.value);
     let uv = response.value;
-    $("#cityList").append($('<h4> UV-Index               </h4> ').append( UVIndex));
+    $("#cityList").append($('<h4> UV-Index </h4> ').append( UVIndex));
     if (uv >= 11) {
-      UVIndex.attr("class", "badge badge-dark p-3 font-size-medium");
+      UVIndex.attr("class", "badge badge-dark pl-3 pr-3 pt-2 pb-2 font-size-medium");
     } else if (uv >= 8) {
-      UVIndex.attr("class", "badge badge-danger p-3 font-size-medium");
+      UVIndex.attr("class", "badge badge-danger pl-3 pr-3 pt-2 font-size-medium");
     } else if (uv >= 6) {
-      UVIndex.attr("class", "badge badge-warning p-3 font-size-medium");
+      UVIndex.attr("class", "badge badge-warning pl-3 pr-3 pt-2 font-size-medium");
     } else if (uv >= 3) {
-      UVIndex.attr("class", "badge badge-success p-3 font-size-medium");
+      UVIndex.attr("class", "badge badge-success pl-3 pr-3 pt-2 font-size-medium");
     }  else if (uv >= 0)  {
-      UVIndex.attr("class", "badge badge-light p-3 font-size-medium");
+      UVIndex.attr("class", "badge badge-light pl-3 pr-3 pt-2 font-size-medium");
     }
   });
 }
@@ -108,10 +108,10 @@ function displayForecast(c) {
         // var cityMain = $('<div>');
         // cityMain.addClass('col forecast bg-primary text-white text-center ml-3 mb-3 p-3 pt-6 rounded>' );
         var newCard = $('<div>').appendTo($(days));
-       var col = $("<div>").addClass("col-lg-2 col-md-12").appendTo(newCard);
+      //  var col = $("<div>").addClass("col-lg-2 col-md-12").appendTo(newCard);
         var newCard = $("<div>").addClass("card").appendTo(newCard);
         var newCardHeader = $("<div>").addClass("card-header").appendTo(newCard);
-      var newCardBody = $("<div>").addClass("card-body").appendTo(newCard);
+        var newCardBody = $("<div>").addClass("card-body").appendTo(newCard);
 
       
       
@@ -122,7 +122,7 @@ function displayForecast(c) {
         
         var futureImg = $('<img>').attr('src', 'http://openweathermap.org/img/wn/' + arrayList[i].weather[0].icon + '@2x.png');
         
-        var degreeMain = $('<div>'+ '🌡' + arrayList[i].main.temp + '°C' + '</div>');
+        var degreeMain = $('<div>'+ '<i class="fas fa-temperature-high" ' + 'style=' + 'font-size' + ':24px></i>' + arrayList[i].main.temp + '°C' + '</div>');
 
         var humidityMain = $('<div>' + '💧 ' + arrayList[i].main.humidity + '%' + '</div>');
         var windMain = $('<div>' +'<i class="fa-solid fa-wind">  </i> ' + arrayList[i].wind.speed + 'MPH' + '</div>');

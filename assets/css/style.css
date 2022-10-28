@@ -11,7 +11,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   html {
     /* default font-size is 16px - this is set in the default browser stylesheet */ 
     font-size: 20px; 
-    font-weight: 400; 
+    font-weight: 500; 
     line-height: 1.5; 
   } 
   
@@ -19,40 +19,23 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   @media (max-width: 767px) { 
     html { 
       /* default is 1rem or 16px */ 
-      font-size: 25px; 
+      font-size: 16px; 
     } 
   }
 
-  .row.col-10{
-    background: rgb(251, 156, 3);
-    border-radius: 20px;
-    display:flex;
-    padding-left: 50px;
-  }
-  .col-md-12.box{
-    display: block;
-    padding-top: 25px;
-    color:white;
-  }
-  .col-10 .row {
-    background: rgb(251, 156, 3);
-    color: white;
-    margin-bottom: 25px;
-  
-  }
-
-  .hr style2 {
-    border-top: 5px #c70000e8;
-    margin-top: 0px;
-    margin-bottom: 3px;
+/*current day forcast body part */
+  .col-md-12{
+    padding-top: 15px;
+    padding-left: 3vw;
+    color:rgb(255, 248, 248);
+    font-weight: 600;
+    font-size: larger;
+    opacity: 90%;
 
   }
 
-  #searchsec.col {
-    background: black;
-  }
 .input-group{
-  margin-top: 25px;
+  margin-top: auto;
   margin-bottom: 25px;
 }
 
@@ -62,7 +45,6 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 .search-button{
   align-self: end;
-  max-height: 5vh;
 }
 
 
@@ -71,42 +53,54 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   float: left;
   background-color: rgba(255, 253, 249, 0.292);
   color: #2d2f428c;
-  padding: 1.5rem;
-  border: solid 2px rgba(244, 206, 15, 0.956);
-  border-radius: 15px;
+  padding: 1rem;
+  border: solid 2px rgba(75, 2, 90, 0.295);
+  border-radius: 35px;
+  margin-bottom: 10px;
 }
 
 
 .card{
-  background: rgba(80, 7, 52, 0.74);
+  background: rgba(207, 114, 171, 0.74);
   display: flex;
   flex-wrap: wrap;
-  margin: 2vw;
-  color: aliceblue;
-  min-width: 12vw;
-}
-
-.card-header{
-  background: rgba(80, 7, 52, 0.836);
+  margin: 1.8vw;
+  min-width: 15vw;
   text-align: center;
   justify-content: center;
 }
 
-
+.card-header{
+  background: rgba(231, 9, 146, 0.267);
+  text-align: center;
+  justify-content: center;
+  font-size: larger;
+ 
+}
 
 #days{
-  background-color: darkgreen;
+  display: flex;
+  display: wrap;
+  justify-content: center;
+  align-content: center;
+  border-radius: 8px;
 }
 
 
 .card .card-body .card-text {
-  color: white;}
+  color: white;
+
+} 
 
 
 .col-sm-12{
 background-color: aquamarine;
+border: solid 10px rgb(255, 254, 254);
+border-left-style: none;
+border-top-style: none;
+border-bottom-style: none;
 }
 
-#search-container{
-  background: pink;
+.container{
+
 }
