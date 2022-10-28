@@ -1,6 +1,6 @@
 
 $(window).on('load', function () {
-  currentLocation();
+//   currentLocation(); IF ACTIVE SEARCH RESULT BUTTONS BELOW SEARCH WILL RESET IF BROWSER CALLED
   checkLocalStorage();
 });
 var APIKey = "1401623932563c24702a8d3ac1d62c4b";
