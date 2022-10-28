@@ -15,79 +15,76 @@
 </head>
 
 <body>
-<div class="jumbotron container-fluid  text-center p-5" style="background-color:#6f01ffaf ;color: white;">
-  <h1 class="display-4"> <strong>Weather Forecast Dashboard</strong></h1>
+<div class="jumbotron container-fluid  text-center p-5 md-textarea-auto" style="background-color:#08acecc9 ;color: white;">
+  <h1> <strong>Weather Forecast Dashboard</strong></h1>
   <div id="currentDay" > </div>
   <div id="currentTime"> </div>
 </div>
 
-<div class="container" style="max-width: 90%;">
+<div class="container" style="max-width: 95%;">
 
   <!--SEARCH FOR CITIES SECTION-->
-    <div class="row db-flex">
-    <div class="col-md-12 col-lg-3 p-2" id="search-container">
+    <div class="row">
+    <div class="col-lg-3 col-md-12 col-sm-12 rounded" id="search-container" style="background-color:#11a7e2c9 ;color: white;">
 
-      <div class ="mt-3 text-center text-primary">
-        <h3>Search City to find Weather</h3>
+      <div class ="mt-3 text-center text-white-20 font-weight-bold">
+        <h5>Search City for Results</h5>
       </div>
 
 
       <div class="input-group">
-        <input type="search" class="form-control rounded" placeholder="Search a City by Name to get Weather Forecast !!!" aria-label="Search" aria-describedby="search-addon" id="city-input"  />
-          <button type="button" class="btn btn-primary" id="search-button">  search  <i class="fa fa-search"></i>  </button>
+        <input type="search" class="form-control" placeholder="Search a City" aria-label="Search" aria-describedby="search-addon" id="city-input"/>
+         <div><br></div> <button type="button" class="btn btn-secondary rounded" id="search-button">   <i class="fa fa-search"></i>  </button>
       </div>
 
       <!--Search History Section-->
-      <div class="mt-3 text-center text-dark">
-      <h6>Previous Search History</h6></div>
-
+   
      <div class="d-grid text-center" id="historyList"></div>
-      <div class="clear btn text-center mt-3">
-        <button id="clearButton" class="btn btn-secondary">Clear Search</button>
+      <div class="text-center m-3 ">
+        <button id="clearButton" class="btn btn-secondary font-small">Clear Search</button>
        </div>
     </div>
   
-    <div class="col-md-12 col-lg-9 ">
+    <div class="col-md-12 col-lg-9 rounded" style="background: #2ba7d8c9;
+    background: linear-gradient(23deg, #0f88b8 5%, rgba(102, 204, 235, 0.979) 35%,#2ba7d8c9 100%); ;color: white;">
 
     <!-- City search result section -->
 
         <!-- <div class="m-3 rounded"> -->
 
 <!--current day results box-->
-<div class="row mt-2 mb-2 rounded">
+<div class="row">
 
-  <div class="col-md-12 ">
-    <div id="cityHeader"></div>
+  <div class="col-12" id="cityHeader"></div>
   </div>
-          <div class="row col-12">
-            <div class="col-lg-6">
-              <div id="cityList"></div>
-            </div>
+          <div class="row pl-5">
+      
+            <div class="col-md-12 col-lg-6 " id="cityList"></div>
+            
 
-            <div class="col-lg-6">
-              <div id="cityImg"></div>
+            <div class="col-lg-6" id="cityImg"></div>
             </div>
 
           </div>
 
-        </div>
-      </div>
-    </div>
-    </div>
-  </div>
+        
+    
+   
       <!-- 5 Days Weather Forecast box's -->
-      <div class="container col-12" >
-      <div class="row" id="days">
+      <div class="container col-12 p-2" >
+      <div class="row" id="days" style="background: #2ba7d8c9;
+      background: linear-gradient(23deg, #0c678b 5%, rgba(139, 206, 226, 0.979) 45%,#2ba7d8c9 100%); ;color: white;">
+  
       
         
 
         </div>
       </div>
 </div>
+
 </div>
 
-
-    </div>
+    
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 <script src="assets/js/script.js"></script>
